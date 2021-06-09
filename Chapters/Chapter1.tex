@@ -1,7 +1,7 @@
-\chapter{Introduction}
-
+\chapter{Introduction of the Task Scheduling Problem}
+In modern era, with the development of artificial intelligent and machine learning technology, robots are becoming deeply integrated into people's life. Therefore, robot path planning is a hot topic that attacks a lot of scientists attention. Among all these robot path planning problems, due to the wide potential of application, \textbf{task scheduling} is one of the most famous question that that has been under debate for long time. There are many versions of problem statement for this task scheduling problem, but one of the most basic and fundamental format is stated as the following: 
 \section{Problem Statement}
-Assume there are K homogeneous robots and M targets randomly distributed in a bounded 2D space. Each target requires \textbf{at least one} robot, and all the robots need to be assigned to one target, and can only be assigned to one target. This is to say, the task assignment, $f$ , is a map on $\mathbf{R^2}$ from set $\mathbf{Robots}$ to set $\mathbf{Tasks}$. 
+Assume there are K homogeneous robots and M targets randomly distributed in a bounded 2D space. Each target requires \textbf{at least one} robot, and each of the robots need to be assigned to one target (in this basic format, we are not considering the situation where one robot can do multiply tasks). This is to say, the task assignment, $f$ , is a map on $\mathbf{R^2}$ from set $\mathbf{Robots}$ to set $\mathbf{Tasks}$. 
 \begin{equation}
     f:{\mathbf{Robots}} \to \mathbf{Tasks}
 \end{equation}
@@ -40,18 +40,18 @@ For each of the robots, it will have at most M choice to choose from as its the 
 \end{equation}
 
 \subsection{Time Analysis and Entropy Analysis}
-With a home used i7-9700K CPU (8 Cores, 3.6GHz), the maximum scale size of this problem that can be solved without memory leaking is 2 tasks and 20 robots (See Figure \ref{fig:upperlimit}). Table \ref{tab:bruteforce} is a summaries the time complexity of this problem with the Brute-force method:
+With a home used i7-9700K CPU (8 Cores, 3.6GHz), the maximum scale size of this problem that can be solved without memory leaking is 2 tasks and 20 robots (See Figure \ref{fig:upperlimit}), or, 8 robots and 8 tasks. Table \ref{tab:bruteforce} is a summaries the time complexity of this problem with the Brute-force method:
 
 \begin{table}[]
     \centering
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 M & K  & Time     & $\chi$       & $H(\chi)$ \\ \hline
-2 & 2  & 0.0005   & 2       &   \\ \hline
-2 & 4  & 0.0005   & 14      &   \\ \hline
-2 & 8  & 0.001488 & 254     &   \\ \hline
-2 & 16 & 0.65571  & 65534   &   \\ \hline
-2 & 20 & 13.02    & 1048574 &   \\ \hline
+2 & 2  & 0.0005   & 2       &  1.000 \\ \hline
+2 & 4  & 0.0005   & 14      &  3.807 \\ \hline
+2 & 8  & 0.001488 & 254     &  7.988 \\ \hline
+2 & 16 & 0.65571  & 65534   &  15.999 \\ \hline
+2 & 20 & 13.02    & 1048574 &   20.000\\ \hline
 \end{tabular}
     \caption{The time complexity analysis of this problem with 2 tasks, and $K = 2^n$ robots}
     \label{tab:bruteforce}
